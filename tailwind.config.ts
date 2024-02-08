@@ -7,6 +7,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -34,6 +35,8 @@ const config = {
       },
       backgroundImage: {
         hero: "url('/assets/home/mobile/image-header.jpg')",
+        "circle-pattern": "url('/assets/home/desktop/pattern-circles.svg')",
+        "zx7-speaker": "url('/assets/home/mobile/image-speaker-zx7.jpg')",
       },
     },
     colors: {

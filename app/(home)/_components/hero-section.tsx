@@ -1,3 +1,4 @@
+import { LinkButton } from "@/components/link-button";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -14,12 +15,9 @@ export function HeroSection() {
         Experience natural, lifelike audio and exceptional build quality made
         for the passionate music enthusiast.
       </p>
-      <Link
-        href={"#"}
-        className="bg-orange-800 inline-block p-4 text-sm font-semibold uppercase tracking-widest"
-      >
+      <LinkButton href={"#"} className="bg-orange-800">
         See product
-      </Link>
+      </LinkButton>
     </div>
   );
 }

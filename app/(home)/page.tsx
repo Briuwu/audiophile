@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
-      <div className="space-y-10 px-4 pt-10">
+      <div className="space-y-10 px-4 pb-10 pt-10">
         <CategorySection />
         <ShowcaseSection />
       </div>

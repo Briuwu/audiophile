@@ -4,9 +4,9 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function NavItems({ className }: { className?: string }) {
+export function NavItems() {
   return (
-    <ul className={cn("mt-16 space-y-16", className)}>
+    <ul className="mt-16 space-y-16">
       {navitem.map((item) => (
         <li
           key={item.title}
@@ -18,12 +18,12 @@ export function NavItems({ className }: { className?: string }) {
               alt={item.title}
               width={80}
               height={104}
-              className={cn("absolute -top-12 object-cover", item.position)}
+              className={cn("absolute -top-8 object-cover", item.position)}
             />
             <p className="text-sm font-semibold uppercase">{item.title}</p>
-            <Link href={item.title} className="flex items-center">
+            <Link href={item.href} className="flex items-center">
               <span className="text-sm uppercase opacity-50">shop</span>
-              <ChevronRight className="text-orange-800 ml-2 h-4 w-4" />
+              <ChevronRight className="ml-2 h-4 w-4 text-orange-800" />
             </Link>
           </div>
         </li>
