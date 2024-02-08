@@ -10,22 +10,27 @@ export function NavItems() {
       {navitem.map((item) => (
         <li
           key={item.title}
-          className="relative flex flex-col items-center rounded-md bg-gray-400 p-3 pt-12"
+          className="group relative items-center rounded-md bg-gray-400"
         >
-          <div className="flex flex-col items-center space-y-5">
+          <Link
+            href={item.href}
+            className="flex flex-col items-center space-y-5 p-3 pt-12"
+          >
             <Image
-              src={item.image}
+              src={`/assets/shared/desktop/${item.image}`}
               alt={item.title}
-              width={80}
-              height={104}
-              className={cn("absolute -top-8 object-cover", item.position)}
+              width={item.width}
+              height={item.height}
+              className={cn("absolute -top-8 w-36", item.position)}
             />
             <p className="text-sm font-semibold uppercase">{item.title}</p>
-            <Link href={item.href} className="flex items-center">
-              <span className="text-sm uppercase opacity-50">shop</span>
+            <p className="flex items-center">
+              <span className="text-sm uppercase opacity-50 group-hover:text-orange-800">
+                shop
+              </span>
               <ChevronRight className="ml-2 h-4 w-4 text-orange-800" />
-            </Link>
-          </div>
+            </p>
+          </Link>
         </li>
       ))}
     </ul>
