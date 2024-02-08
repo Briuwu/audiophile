@@ -1,20 +1,26 @@
 export const navitem = [
   {
     title: "headphones",
-    image: "/assets/nav/headphones.png",
+    image: "image-category-thumbnail-headphones.png",
     position: "-top-14",
     href: "/headphones",
+    width: 438,
+    height: 422,
   },
   {
     title: "speakers",
-    image: "/assets/nav/speakers.png",
+    image: "image-category-thumbnail-speakers.png",
     position: "-top-12",
     href: "/speakers",
+    width: 438,
+    height: 408,
   },
   {
     title: "earphones",
-    image: "/assets/nav/earphones.png",
+    image: "image-category-thumbnail-earphones.png",
     position: "-top-8",
     href: "/earphones",
+    width: 438,
+    height: 380,
   },
 ];
