@@ -10,9 +10,35 @@ const config = {
   ],
   prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundImage: {
+        hero: "url('/assets/home/mobile/image-header.jpg')",
+      },
+    },
     colors: {
-      "orange-400": "#FBAF85",
-      "orange-700": "#D87D4A",
+      "orange-800": "#D87D4A",
+      "orange-400": "#fbaf85",
       "black-900": "#101010",
       "gray-400": "#F1F1F1",
       "white-100": "#FAFAFA",
