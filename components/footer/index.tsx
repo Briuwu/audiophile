@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <div className="mt-24 text-center">
-      <div className="container mb-24">
+      <div className="container mb-24 lg:flex lg:flex-row-reverse lg:items-center lg:text-left">
         <Image
           src={"/assets/shared/mobile/image-best-gear.jpg"}
           alt=""
@@ -18,9 +18,17 @@ export function Footer() {
           alt=""
           width={1378}
           height={600}
-          className="mx-auto hidden rounded-xl md:block"
+          className="mx-auto hidden rounded-xl md:block lg:hidden"
         />
-        <div className="mx-auto max-w-xl">
+        <Image
+          src={"/assets/shared/desktop/image-best-gear.jpg"}
+          alt=""
+          width={540}
+          height={588}
+          className="mx-auto hidden rounded-xl lg:mx-0 lg:block"
+        />
+
+        <div className="mx-auto max-w-xl lg:ml-0">
           <p className="mb-8 mt-10 text-3xl font-bold uppercase md:text-5xl">
             Bringing you the <span className="text-orange-800">best</span> audio
             gear
@@ -36,16 +44,16 @@ export function Footer() {
         </div>
       </div>
       <footer className="bg-black pb-12 text-white">
-        <div className="container space-y-12 md:text-left">
+        <div className="container grid space-y-12 md:grid-cols-2 md:text-left">
           <div className=" mx-auto h-1 w-28 bg-orange-800 md:ml-0" />
           <Image
             src={"/assets/shared/desktop/logo.svg"}
             alt="audiophile logo"
             width={143}
             height={25}
-            className="mx-auto pt-12 md:ml-0"
+            className="mx-auto pt-12 md:col-span-2 md:ml-0 lg:col-start-1 lg:row-start-3"
           />
-          <ul className="flex flex-col gap-4 font-bold uppercase md:flex-row md:gap-8">
+          <ul className="flex flex-col gap-4 font-bold uppercase md:col-span-2 md:flex-row md:gap-8 lg:col-span-2 lg:col-start-2 lg:row-start-3 lg:gap-9 lg:self-end lg:justify-self-end">
             <li>
               <Link href={"/"}>home</Link>
             </li>
@@ -55,39 +63,37 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <p className="opacity-75">
+          <p className="opacity-75 md:col-span-2 lg:row-start-4 lg:max-w-xl">
             Audiophile is an all in one stop to fulfill your audio needs. We’re
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
             our demo facility - we’re open 7 days a week.
           </p>
-          <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-            <p className="font-bold opacity-75">
-              Copyright 2024. All Rights Reserved. @Briuwu
-            </p>
-            <div>
-              <Image
-                src={"/assets/shared/desktop/icon-facebook.svg"}
-                alt="facebook"
-                width={24}
-                height={24}
-                className="mx-2 inline-block"
-              />
-              <Image
-                src={"/assets/shared/desktop/icon-twitter.svg"}
-                alt="twitter"
-                width={24}
-                height={24}
-                className="mx-2 inline-block"
-              />
-              <Image
-                src={"/assets/shared/desktop/icon-instagram.svg"}
-                alt="instagram"
-                width={24}
-                height={24}
-                className="mx-2 inline-block"
-              />
-            </div>
+          <p className="font-bold opacity-75 lg:row-start-5">
+            Copyright 2024. All Rights Reserved. @Briuwu
+          </p>
+          <div className="md:justify-self-end lg:row-start-4 lg:self-end">
+            <Image
+              src={"/assets/shared/desktop/icon-facebook.svg"}
+              alt="facebook"
+              width={24}
+              height={24}
+              className="mx-2 inline-block"
+            />
+            <Image
+              src={"/assets/shared/desktop/icon-twitter.svg"}
+              alt="twitter"
+              width={24}
+              height={24}
+              className="mx-2 inline-block"
+            />
+            <Image
+              src={"/assets/shared/desktop/icon-instagram.svg"}
+              alt="instagram"
+              width={24}
+              height={24}
+              className="mx-2 inline-block"
+            />
           </div>
         </div>
       </footer>
