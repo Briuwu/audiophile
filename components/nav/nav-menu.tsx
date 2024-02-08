@@ -21,7 +21,7 @@ export function NavMenu() {
         <Menu />
         <span className="sr-only">Menu</span>
       </SheetTrigger>
-      <SheetContent className="w-full bg-white">
+      <SheetContent side={"top"} className="w-full bg-white md:top-24">
         <NavItems />
       </SheetContent>
     </Sheet>

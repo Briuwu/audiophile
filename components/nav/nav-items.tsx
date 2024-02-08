@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function NavItems() {
   return (
-    <ul className="mt-16 space-y-16">
+    <ul className="mt-16 space-y-16 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
       {navitem.map((item) => (
         <li
           key={item.title}
