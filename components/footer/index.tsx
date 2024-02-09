@@ -1,32 +1,42 @@
-import { navitem } from "@/lib/constants";
+import { best_gear_images, navitem } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { FacebookIcon } from "../socials/facebook-icon";
+import { InstagramIcon } from "../socials/instagram-icon";
+import { TwitterIcon } from "../socials/twitter-icon";
+
+const socials = [
+  {
+    key: "facebook",
+    icon: <FacebookIcon />,
+    link: "#",
+  },
+  {
+    key: "twitter",
+    icon: <TwitterIcon />,
+    link: "#",
+  },
+  {
+    key: "instagram",
+    icon: <InstagramIcon />,
+    link: "#",
+  },
+];
 
 export function Footer() {
   return (
     <div className="mt-24 text-center">
       <div className="container mb-24 lg:flex lg:flex-row-reverse lg:items-center lg:text-left">
-        <Image
-          src={"/assets/shared/mobile/image-best-gear.jpg"}
-          alt=""
-          width={654}
-          height={600}
-          className="mx-auto rounded-xl md:hidden"
-        />
-        <Image
-          src={"/assets/shared/tablet/image-best-gear.jpg"}
-          alt=""
-          width={1378}
-          height={600}
-          className="mx-auto hidden rounded-xl md:block lg:hidden"
-        />
-        <Image
-          src={"/assets/shared/desktop/image-best-gear.jpg"}
-          alt=""
-          width={540}
-          height={588}
-          className="mx-auto hidden rounded-xl lg:mx-0 lg:block"
-        />
+        {best_gear_images.map((item) => (
+          <Image
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            key={item.src}
+            className={item.className}
+          />
+        ))}
 
         <div className="mx-auto max-w-xl lg:ml-0">
           <p className="mb-8 mt-10 text-3xl font-bold uppercase md:text-5xl">
@@ -54,11 +64,11 @@ export function Footer() {
             className="mx-auto pt-12 md:col-span-2 md:ml-0 lg:col-start-1 lg:row-start-3"
           />
           <ul className="flex flex-col gap-4 font-bold uppercase md:col-span-2 md:flex-row md:gap-8 lg:col-span-2 lg:col-start-2 lg:row-start-3 lg:gap-9 lg:self-end lg:justify-self-end">
-            <li>
+            <li className="hover:text-orange-800">
               <Link href={"/"}>home</Link>
             </li>
             {navitem.map((item) => (
-              <li key={item.title}>
+              <li key={item.title} className="hover:text-orange-800">
                 <Link href={item.href}>{item.title}</Link>
               </li>
             ))}
@@ -72,29 +82,13 @@ export function Footer() {
           <p className="font-bold opacity-75 lg:row-start-5">
             Copyright 2024. All Rights Reserved. @Briuwu
           </p>
-          <div className="md:justify-self-end lg:row-start-4 lg:self-end">
-            <Image
-              src={"/assets/shared/desktop/icon-facebook.svg"}
-              alt="facebook"
-              width={24}
-              height={24}
-              className="mx-2 inline-block"
-            />
-            <Image
-              src={"/assets/shared/desktop/icon-twitter.svg"}
-              alt="twitter"
-              width={24}
-              height={24}
-              className="mx-2 inline-block"
-            />
-            <Image
-              src={"/assets/shared/desktop/icon-instagram.svg"}
-              alt="instagram"
-              width={24}
-              height={24}
-              className="mx-2 inline-block"
-            />
-          </div>
+          <ul className="space-x-4 md:justify-self-end lg:row-start-4 lg:self-end">
+            {socials.map((social) => (
+              <li key={social.key} className="inline-block">
+                <Link href={social.link}>{social.icon}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </footer>
     </div>

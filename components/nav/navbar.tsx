@@ -20,16 +20,19 @@ export function Navbar() {
         <div className="lg:hidden">
           <NavMenu />
         </div>
-        <Image
-          src={"/assets/shared/desktop/logo.svg"}
-          alt="audiophile logo"
-          width={143}
-          height={25}
-          className="md:mr-auto lg:m-0"
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/assets/shared/desktop/logo.svg"}
+            alt="audiophile logo"
+            width={143}
+            height={25}
+            className="md:mr-auto lg:m-0"
+          />
+          <span className="sr-only">audiophile</span>
+        </Link>
         <ul className="hidden gap-9 font-bold lg:flex">
           {navItems.map((item) => (
-            <li key={item.title} className="hover:text-orange-800">
+            <li key={item.title} className="uppercase hover:text-orange-800">
               <Link href={item.href}>{item.title}</Link>
             </li>
           ))}
