@@ -1,4 +1,4 @@
-import { CategorySection } from "./_components/category-section";
+import { CategorySection } from "../../components/category-section";
 import { HeroSection } from "./_components/hero-section";
 import { ShowcaseSection } from "./_components/showcase-section";
 
