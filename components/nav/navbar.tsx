@@ -1,16 +1,29 @@
+"use client";
 import { ShoppingCart } from "lucide-react";
 import { NavMenu } from "./nav-menu";
 import Image from "next/image";
 import Link from "next/link";
-
-const navItems = [
-  { title: "Home", href: "/" },
-  { title: "Headphones", href: "/headphones" },
-  { title: "Speakers", href: "/speakers" },
-  { title: "Earphones", href: "/earphones" },
-];
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
+  const pathname = usePathname();
+
+  const navItems = [
+    { title: "Home", href: "/", active: pathname === "/" },
+    {
+      title: "Headphones",
+      href: "/headphones",
+      active: pathname === "/headphones",
+    },
+    { title: "Speakers", href: "/speakers", active: pathname === "/speakers" },
+    {
+      title: "Earphones",
+      href: "/earphones",
+      active: pathname === "/earphones",
+    },
+  ];
+
   return (
     <nav className="sticky top-0 z-50  bg-black text-white">
       <div
@@ -32,7 +45,13 @@ export function Navbar() {
         </Link>
         <ul className="hidden gap-9 font-bold lg:flex">
           {navItems.map((item) => (
-            <li key={item.title} className="uppercase hover:text-orange-800">
+            <li
+              key={item.title}
+              className={cn(
+                "uppercase hover:text-orange-800",
+                item.active && "text-orange-800",
+              )}
+            >
               <Link href={item.href}>{item.title}</Link>
             </li>
           ))}
