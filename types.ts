@@ -18,3 +18,8 @@ export type Product = {
   slug: string;
   order: boolean;
 };
+
+export type IncludedItem = {
+  quantity: number;
+  item: string;
+};
