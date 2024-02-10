@@ -1,10 +1,22 @@
-import { LinkButton } from "@/components/link-button";
-import createSupabaseServerClient from "@/lib/supabase/server";
-import { Product } from "@/types";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CategorySection } from "@/components/category-section";
+import createSupabaseServerClient from "@/lib/supabase/server";
+
+import { Product } from "@/types";
 import { cn } from "@/lib/utils";
+import { LinkButton } from "@/components/link-button";
+import { CategorySection } from "@/components/category-section";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { product: string };
+}) {
+  return {
+    title: `${params.product.toUpperCase()} | Audiophile`,
+    description: `Check out our ${params.product} products.`,
+  };
+}
 
 export default async function Category({
   params,
@@ -23,8 +35,6 @@ export default async function Category({
     console.error(error);
     return notFound();
   }
-
-  const newProduct = products.filter((product) => product.new)[0];
 
   const displayProduct = products.map((product, index) => ({
     ...product,

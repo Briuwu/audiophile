@@ -16,7 +16,10 @@ export function HeroSection() {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <LinkButton href={"#"} className="bg-orange-800 md:mt-28">
+        <LinkButton
+          href={"/headphones/xx99-mark-two-headphones"}
+          className="bg-orange-800 md:mt-28"
+        >
           See product
         </LinkButton>
       </div>

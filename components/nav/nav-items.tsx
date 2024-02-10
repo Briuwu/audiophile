@@ -1,10 +1,17 @@
+"use client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 import { navitem } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
-export function NavItems() {
+export function NavItems({ handleMenuClick }: { handleMenuClick: () => void }) {
+  const router = useRouter();
+  const onClick = (link: string) => {
+    handleMenuClick();
+    router.push(link);
+  };
   return (
     <ul className="mt-16 space-y-16 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
       {navitem.map((item) => (
@@ -12,9 +19,9 @@ export function NavItems() {
           key={item.title}
           className="group relative items-center rounded-md bg-gray-400"
         >
-          <Link
-            href={item.href}
-            className="flex flex-col items-center space-y-5 p-3 pt-12"
+          <button
+            onClick={() => onClick(item.href)}
+            className="mx-auto flex h-full w-full flex-col items-center space-y-5 p-3 pt-12"
           >
             <Image
               src={`/assets/shared/desktop/${item.image}`}
@@ -30,7 +37,7 @@ export function NavItems() {
               </span>
               <ChevronRight className="ml-2 h-4 w-4 text-orange-800" />
             </p>
-          </Link>
+          </button>
         </li>
       ))}
     </ul>

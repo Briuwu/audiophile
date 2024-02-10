@@ -6,6 +6,7 @@ import { NavItems } from "./nav-items";
 
 export function NavMenu() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -15,14 +16,16 @@ export function NavMenu() {
     return null;
   }
 
+  const onMenuClick = () => setIsOpen(false);
+
   return (
-    <Sheet>
+    <Sheet onOpenChange={setIsOpen} open={isOpen}>
       <SheetTrigger>
         <Menu />
         <span className="sr-only">Menu</span>
       </SheetTrigger>
       <SheetContent side={"top"} className="w-full bg-white md:top-24">
-        <NavItems />
+        <NavItems handleMenuClick={onMenuClick} />
       </SheetContent>
     </Sheet>
   );
