@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import createSupabaseServerClient from "@/lib/supabase/server";
+import { cn } from "@/lib/utils";
 
 import { Product } from "@/types";
-import { cn } from "@/lib/utils";
 import { LinkButton } from "@/components/link-button";
 import { CategorySection } from "@/components/category-section";
 

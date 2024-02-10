@@ -2,8 +2,9 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AddToCart } from "./_components/add-to-cart";
+
 import { IncludedItem } from "@/types";
+import { AddToCart } from "./_components/add-to-cart";
 
 export async function generateMetadata({
   params,
