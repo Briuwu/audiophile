@@ -1,5 +1,4 @@
 import { LinkButton } from "@/components/link-button";
-import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -17,7 +16,7 @@ export function HeroSection() {
           for the passionate music enthusiast.
         </p>
         <LinkButton
-          href={"/headphones/xx99-mark-two-headphones"}
+          href={"/category/headphones/xx99-mark-two-headphones"}
           className="bg-orange-800 md:mt-28"
         >
           See product

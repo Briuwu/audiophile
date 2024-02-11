@@ -69,7 +69,7 @@ export function Footer() {
             </li>
             {navitem.map((item) => (
               <li key={item.title} className="hover:text-orange-800">
-                <Link href={item.href}>{item.title}</Link>
+                <Link href={`/category/${item.href}`}>{item.title}</Link>
               </li>
             ))}
           </ul>

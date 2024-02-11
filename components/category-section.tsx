@@ -13,7 +13,7 @@ export function CategorySection() {
           className="group relative items-center rounded-md bg-gray-400"
         >
           <Link
-            href={item.href}
+            href={`/category/${item.href}`}
             className="flex h-full w-full flex-col items-center space-y-4 p-5 pt-12 lg:p-8 lg:pt-32"
           >
             <Image

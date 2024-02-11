@@ -6,7 +6,7 @@ export type Product = {
     tablet: string;
     desktop: string;
   };
-  category: "earphones" | "headphones" | "speakers";
+  category: string;
   created_at: string;
   description: string;
   features: string;
@@ -17,7 +17,10 @@ export type Product = {
   price: number;
   slug: string;
   order: boolean;
+  other_name: string;
 };
+
+export type OriginalProduct = Omit<Product, "images" | "order">;
 
 export type IncludedItem = {
   quantity: number;

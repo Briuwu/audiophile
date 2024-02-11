@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import "./globals.css";
 
 import { Navbar } from "@/components/nav/navbar";
-
-import "./globals.css";
 import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -25,6 +25,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Toaster theme="light" richColors />
       </body>
     </html>
   );

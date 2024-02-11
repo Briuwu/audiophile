@@ -29,7 +29,7 @@ export function ShowcaseSection() {
             truly remarkable sound.
           </p>
           <LinkButton
-            href={"/speakers/zx9-speaker"}
+            href={"/category/speakers/zx9-speaker"}
             className="bg-black-900 px-6 hover:bg-gray-400 hover:text-black lg:justify-self-start"
           >
             See product
@@ -50,7 +50,7 @@ export function ShowcaseSection() {
         <div className="space-y-7 self-center px-6 lg:px-24">
           <h2 className="text-3xl font-bold uppercase">zx7 speaker</h2>
           <LinkButton
-            href="/speakers/zx7-speaker"
+            href="/category/speakers/zx7-speaker"
             className="border border-black text-center hover:bg-black hover:text-white"
           >
             see product
@@ -71,7 +71,7 @@ export function ShowcaseSection() {
         <div className="space-y-8 rounded-xl bg-gray-400 px-6 py-10 lg:grid lg:place-content-center">
           <h2 className="text-3xl font-bold uppercase">yx1 earphones</h2>
           <LinkButton
-            href="/earphones/yx1-earphones"
+            href="/category/earphones/yx1-earphones"
             className="justify-self-start border border-black text-center hover:bg-black hover:text-white"
           >
             see product

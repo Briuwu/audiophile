@@ -1,17 +1,21 @@
-import createSupabaseServerClient from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { IncludedItem } from "@/types";
 import { AddToCart } from "./_components/add-to-cart";
+import { readUserSession } from "@/lib/supabase/read-session";
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }) {
-  const supabase = await createSupabaseServerClient();
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
 
   const { data: product, error } = await supabase
     .from("products")
@@ -38,7 +42,12 @@ export default async function Product({
     slug: string;
   };
 }) {
-  const supabase = await createSupabaseServerClient();
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const {
+    data: { user },
+  } = await readUserSession();
 
   const { data: product, error } = await supabase
     .from("products")
@@ -71,10 +80,11 @@ export default async function Product({
   const includedItems: IncludedItem[] = JSON.parse(
     JSON.stringify(displayProduct.includes),
   );
+
   return (
     <div className="container">
       <Link
-        href={`/${params.product}`}
+        href={`/category/${params.product}`}
         className="mt-4 inline-block font-semibold opacity-50 hover:underline hover:opacity-100 lg:mt-20"
       >
         Go back
@@ -114,7 +124,9 @@ export default async function Product({
           <p className="text-lg font-bold tracking-wide">
             $ {new Intl.NumberFormat().format(displayProduct.price)}
           </p>
-          <AddToCart />
+          <Suspense fallback={null}>
+            <AddToCart productId={displayProduct.id} user={user} />
+          </Suspense>
         </div>
       </div>
       <div className="my-20 grid gap-20 md:my-28 md:gap-28 lg:grid-cols-2 lg:gap-32">

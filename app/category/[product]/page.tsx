@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import createSupabaseServerClient from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { cn } from "@/lib/utils";
 
 import { Product } from "@/types";
 import { LinkButton } from "@/components/link-button";
 import { CategorySection } from "@/components/category-section";
+import { cookies } from "next/headers";
 
 export async function generateMetadata({
   params,
@@ -23,7 +24,8 @@ export default async function Category({
 }: {
   params: { product: string };
 }) {
-  const supabase = await createSupabaseServerClient();
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
 
   const { data: products, error } = await supabase
     .from("products")
@@ -103,7 +105,7 @@ const Item = ({ product }: { product: Product }) => {
         </h2>
         <p className="opacity-75">{product.description}</p>
         <LinkButton
-          href={`/${product.category}/${product.slug}`}
+          href={`/category/${product.category}/${product.slug}`}
           className="bg-orange-800 text-white hover:bg-orange-400"
         >
           See Product

@@ -19,6 +19,7 @@ export type Database = {
           id: string
           name: string
           phone: string
+          user_id: string | null
           zip_code: string
         }
         Insert: {
@@ -30,6 +31,7 @@ export type Database = {
           id?: string
           name: string
           phone: string
+          user_id?: string | null
           zip_code: string
         }
         Update: {
@@ -41,27 +43,57 @@ export type Database = {
           id?: string
           name?: string
           phone?: string
+          user_id?: string | null
           zip_code?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "billing_info_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
-      categories: {
+      cart: {
         Row: {
           created_at: string
-          id: string
-          name: string
+          id: number
+          product_id: string
+          quantity: number
+          user_id: string
         }
         Insert: {
           created_at?: string
-          id?: string
-          name: string
+          id?: number
+          product_id: string
+          quantity: number
+          user_id: string
         }
         Update: {
           created_at?: string
-          id?: string
-          name?: string
+          id?: number
+          product_id?: string
+          quantity?: number
+          user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "cart_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cart_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       orders: {
         Row: {
@@ -69,18 +101,21 @@ export type Database = {
           created_at: string
           id: string
           products: Json
+          user_id: string | null
         }
         Insert: {
           billing_id?: string | null
           created_at?: string
           id?: string
           products: Json
+          user_id?: string | null
         }
         Update: {
           billing_id?: string | null
           created_at?: string
           id?: string
           products?: Json
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -89,12 +124,19 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "billing_info"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "orders_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
       products: {
         Row: {
-          category: Database["public"]["Enums"]["categories_types"]
+          category: string
           created_at: string
           description: string
           features: string
@@ -102,11 +144,12 @@ export type Database = {
           includes: Json
           name: string
           new: boolean
+          other_name: string
           price: number
           slug: string
         }
         Insert: {
-          category: Database["public"]["Enums"]["categories_types"]
+          category: string
           created_at?: string
           description: string
           features: string
@@ -114,11 +157,12 @@ export type Database = {
           includes: Json
           name: string
           new?: boolean
+          other_name: string
           price: number
           slug: string
         }
         Update: {
-          category?: Database["public"]["Enums"]["categories_types"]
+          category?: string
           created_at?: string
           description?: string
           features?: string
@@ -126,6 +170,7 @@ export type Database = {
           includes?: Json
           name?: string
           new?: boolean
+          other_name?: string
           price?: number
           slug?: string
         }
