@@ -4,6 +4,8 @@ import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
 
 import { Button } from "@/components/ui/button";
+import createSupabaseBrowserClient from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
 
 export function AddToCart({
   productId,
@@ -12,6 +14,8 @@ export function AddToCart({
   productId: string;
   user: User | null;
 }) {
+  const supabase = createSupabaseBrowserClient();
+  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
 
   const handleMinus = () => {
@@ -29,8 +33,20 @@ export function AddToCart({
       toast.error("Please login to add to cart");
       return;
     }
+    const { error } = await supabase.from("cart").insert({
+      user_id: user.id,
+      product_id: productId,
+      quantity,
+    });
+
+    if (error) {
+      toast.error("Failed to add to cart");
+      return;
+    }
+
     toast.success("Added to cart");
     setQuantity(1);
+    router.refresh();
   };
 
   return (
