@@ -8,7 +8,7 @@ import { LinkButton } from "@/components/link-button";
 
 export function ShowcaseSection() {
   return (
-    <div className="grid gap-6">
+    <section className="grid gap-6">
       <div className="overflow-hidden rounded-xl bg-orange-800 bg-circle-pattern bg-[center_bottom_7rem] bg-no-repeat px-6 py-14 text-center text-white lg:flex lg:bg-[left_bottom_-15rem]">
         {showcase_speaker_zx9.map((item) => (
           <Image
@@ -78,6 +78,6 @@ export function ShowcaseSection() {
           </LinkButton>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
