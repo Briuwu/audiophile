@@ -25,7 +25,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <div className="mt-24 text-center">
+    <footer className="mt-24 text-center">
       <div className="container mb-24 lg:flex lg:flex-row-reverse lg:items-center lg:text-left">
         {best_gear_images.map((item) => (
           <Image
@@ -38,7 +38,7 @@ export function Footer() {
           />
         ))}
 
-        <section className="mx-auto max-w-xl lg:ml-0">
+        <div className="mx-auto max-w-xl lg:ml-0">
           <h3 className="mb-8 mt-10 text-3xl font-bold uppercase md:text-5xl">
             Bringing you the <span className="text-orange-800">best</span> audio
             gear
@@ -51,9 +51,9 @@ export function Footer() {
             products. Stop by our store to meet some of the fantastic people who
             make Audiophile the best place to buy your portable audio equipment.
           </p>
-        </section>
+        </div>
       </div>
-      <footer className="bg-black pb-12 text-white">
+      <div className="bg-black pb-12 text-white">
         <div className="container grid space-y-12 md:grid-cols-2 md:text-left">
           <div className=" mx-auto h-1 w-28 bg-orange-800 md:ml-0" />
           <Image
@@ -92,7 +92,7 @@ export function Footer() {
             ))}
           </ul>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
