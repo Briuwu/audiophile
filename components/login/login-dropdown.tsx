@@ -12,7 +12,7 @@ export function LoginDropdown() {
       <DropdownMenuTrigger>
         <LogIn />
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="bottom" className="m-4 p-4">
+      <DropdownMenuContent side="bottom" className="m-6 p-4">
         <LoginForm />
       </DropdownMenuContent>
     </DropdownMenu>

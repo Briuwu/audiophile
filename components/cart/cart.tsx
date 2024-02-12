@@ -93,7 +93,14 @@ export function Cart({ products, user }: CartProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <ShoppingCart />
+        <div className="relative">
+          <ShoppingCart />
+          {products.length > 0 && (
+            <span className="absolute -right-2 -top-2 block aspect-square w-5 rounded-full bg-orange-800 text-sm">
+              {products.length}
+            </span>
+          )}
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="bottom" className="m-4 p-7">
         <div className="flex items-center justify-between gap-28">
