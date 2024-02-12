@@ -11,6 +11,7 @@ export function LoginDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <LogIn />
+        <span className="sr-only">Log in</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="bottom" className="m-6 p-4">
         <LoginForm />

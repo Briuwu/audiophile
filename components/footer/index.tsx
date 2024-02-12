@@ -26,7 +26,7 @@ const socials = [
 export function Footer() {
   return (
     <div className="mt-24 text-center">
-      <div className="container mb-24 lg:flex lg:flex-row-reverse lg:items-center lg:text-left">
+      <section className="container mb-24 lg:flex lg:flex-row-reverse lg:items-center lg:text-left">
         {best_gear_images.map((item) => (
           <Image
             src={item.src}
@@ -39,10 +39,10 @@ export function Footer() {
         ))}
 
         <div className="mx-auto max-w-xl lg:ml-0">
-          <p className="mb-8 mt-10 text-3xl font-bold uppercase md:text-5xl">
+          <h4 className="mb-8 mt-10 text-3xl font-bold uppercase md:text-5xl">
             Bringing you the <span className="text-orange-800">best</span> audio
             gear
-          </p>
+          </h4>
           <p className="opacity-75">
             Located at the heart of New York City, Audiophile is the premier
             store for high end headphones, earphones, speakers, and audio
@@ -52,7 +52,7 @@ export function Footer() {
             make Audiophile the best place to buy your portable audio equipment.
           </p>
         </div>
-      </div>
+      </section>
       <footer className="bg-black pb-12 text-white">
         <div className="container grid space-y-12 md:grid-cols-2 md:text-left">
           <div className=" mx-auto h-1 w-28 bg-orange-800 md:ml-0" />
@@ -85,7 +85,9 @@ export function Footer() {
           <ul className="space-x-4 md:justify-self-end lg:row-start-4 lg:self-end">
             {socials.map((social) => (
               <li key={social.key} className="inline-block">
-                <Link href={social.link}>{social.icon}</Link>
+                <Link href={social.link}>
+                  {social.icon} <span className="sr-only">{social.key}</span>
+                </Link>
               </li>
             ))}
           </ul>
