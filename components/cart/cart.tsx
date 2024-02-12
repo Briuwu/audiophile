@@ -15,7 +15,6 @@ import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import Link from "next/link";
 import { LinkButton } from "../link-button";
 
 interface CartProps {

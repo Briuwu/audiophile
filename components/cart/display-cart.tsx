@@ -1,9 +1,7 @@
 import { readUserSession } from "@/lib/supabase/read-session";
 import { Cart } from "./cart";
 import { LoginDropdown } from "../login/login-dropdown";
-import { cookies } from "next/headers";
 import { SignOut } from "../login/sign-out";
-import { createClient } from "@/lib/supabase/server";
 import { productsInCart } from "@/app/actions";
 
 export async function DisplayCart() {

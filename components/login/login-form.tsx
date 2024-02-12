@@ -16,7 +16,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-import { login, loginWithMagicLink } from "@/app/actions";
+import { loginWithMagicLink } from "@/app/actions";
 
 const schema = z.object({
   email: z.string().email(),
