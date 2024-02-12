@@ -9,12 +9,14 @@ import {
 import { Button } from "../ui/button";
 import { Product } from "@/types";
 import Image from "next/image";
-import { convertNumber } from "@/lib/utils";
+import { cn, convertNumber } from "@/lib/utils";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
+import Link from "next/link";
+import { LinkButton } from "../link-button";
 
 type CartWithImages = Product & { product_image: string; quantity: number };
 
@@ -86,6 +88,11 @@ export function Cart({ products, user }: CartProps) {
     });
   };
 
+  const totalCartPrice = products.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0,
+  );
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -103,13 +110,10 @@ export function Cart({ products, user }: CartProps) {
             Remove all
           </Button>
         </div>
-        <DropdownMenuSeparator />
-        <div className="space-y-2">
+        <DropdownMenuSeparator className="mb-4" />
+        <div className="space-y-4">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="flex items-center justify-between gap-2"
-            >
+            <div key={product.id} className="flex items-center gap-4">
               <Image
                 src={product.product_image}
                 alt={product.name}
@@ -121,7 +125,7 @@ export function Cart({ products, user }: CartProps) {
                 <p className="font-bold uppercase">{product.other_name}</p>
                 <p>$ {convertNumber(product.price)}</p>
               </div>
-              <div className="bg-gray-400">
+              <div className="ml-auto bg-gray-400">
                 <Button
                   variant={"ghost"}
                   onClick={() =>
@@ -144,6 +148,23 @@ export function Cart({ products, user }: CartProps) {
               </div>
             </div>
           ))}
+          {products.length > 0 && (
+            <>
+              <div className="flex items-center justify-between">
+                <p className="uppercase opacity-75">Total</p>
+                <p className="font-bold">$ {convertNumber(totalCartPrice)}</p>
+              </div>
+              <LinkButton
+                href="/checkout"
+                className={cn(
+                  "w-full bg-orange-800 text-center text-white hover:bg-orange-400",
+                  isPending && "pointer-events-none opacity-50",
+                )}
+              >
+                Checkout
+              </LinkButton>
+            </>
+          )}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

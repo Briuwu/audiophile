@@ -87,7 +87,7 @@ export default function LoginForm() {
           )}
         /> */}
         <Button type="submit" disabled={isPending}>
-          Login
+          Login via magic link
         </Button>
       </form>
     </Form>

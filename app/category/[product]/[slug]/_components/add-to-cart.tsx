@@ -33,6 +33,26 @@ export function AddToCart({
       toast.error("Please login to add to cart");
       return;
     }
+
+    // check if the product is already in the cart
+    const { data: cart, error: cartError } = await supabase
+      .from("cart")
+      .select("*")
+      .eq("product_id", productId)
+      .eq("user_id", user?.id!);
+
+    if (cartError) {
+      toast.error("Error adding to cart");
+      return;
+    }
+
+    // if product is in the cart, don't add
+    if (cart?.length) {
+      toast.error("Product already in cart");
+      return;
+    }
+
+    // add to cart
     const { error } = await supabase.from("cart").insert({
       user_id: user.id,
       product_id: productId,
