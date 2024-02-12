@@ -26,3 +26,8 @@ export type IncludedItem = {
   quantity: number;
   item: string;
 };
+
+export type ProductsInCart = OriginalProduct & {
+  product_image: string;
+  quantity: number;
+};
