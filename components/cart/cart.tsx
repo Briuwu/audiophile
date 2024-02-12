@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { Product } from "@/types";
+import { Product, ProductsInCart } from "@/types";
 import Image from "next/image";
 import { cn, convertNumber } from "@/lib/utils";
 import createSupabaseBrowserClient from "@/lib/supabase/client";
@@ -18,10 +18,8 @@ import { useTransition } from "react";
 import Link from "next/link";
 import { LinkButton } from "../link-button";
 
-type CartWithImages = Product & { product_image: string; quantity: number };
-
 interface CartProps {
-  products: CartWithImages[];
+  products: ProductsInCart[];
   user: User | null;
 }
 

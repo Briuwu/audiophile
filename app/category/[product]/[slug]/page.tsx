@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { IncludedItem } from "@/types";
 import { AddToCart } from "./_components/add-to-cart";
 import { readUserSession } from "@/lib/supabase/read-session";
+import { CategorySection } from "@/components/category-section";
 
 export async function generateMetadata({
   params,
@@ -152,6 +153,7 @@ export default async function Product({
           </ul>
         </div>
       </div>
+      <CategorySection />
     </div>
   );
 }
