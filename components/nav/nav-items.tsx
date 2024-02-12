@@ -10,7 +10,7 @@ export function NavItems({ handleMenuClick }: { handleMenuClick: () => void }) {
   const router = useRouter();
   const onClick = (link: string) => {
     handleMenuClick();
-    router.push(link);
+    router.push(`/category/${link}`);
   };
   return (
     <ul className="mt-16 space-y-16 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
